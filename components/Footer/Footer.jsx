@@ -1,3 +1,5 @@
+'use client'
+
 import React from "react";
 import { FaMapMarkerAlt, FaPhone, FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 
@@ -68,7 +70,7 @@ const Footer = () => {
 
           {/* Section 3 - Horaires */}
           <div>
-            <h4 className="text-xl font-semibold mb-4">Horaires d'Ouverture</h4>
+            <h4 className="text-xl font-semibold mb-4">Horaires d&apos;Ouverture</h4>
             <div className="space-y-2 text-sm md:text-base text-gray-300">
               <p><span className="font-semibold">Lundi - Vendredi:</span> 7h - 20h</p>
               <p><span className="font-semibold">Samedi:</span> 8h - 21h</p>

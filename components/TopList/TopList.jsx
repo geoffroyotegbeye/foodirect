@@ -1,25 +1,25 @@
+'use client'
+
 import React from "react";
-import Image1 from "../../assets/3.png";
-import Image2 from "../../assets/4.png";
-import Image3 from "../../assets/5.png";
+import Image from "next/image";
 
 const FoodData = [
   {
-    image: Image1,
+    image: "/assets/3.png",
     rating: "⭐⭐⭐⭐⭐",
     price: "800 FCFA",
     name: "Riz au Gras Créole",
     desc: "Notre spécialité la plus appréciée, un riz savoureux avec un assaisonnement riche et authentique.",
   },
   {
-    image: Image2,
+    image: "/assets/4.png",
     rating: "⭐⭐⭐⭐⭐",
     price: "500 FCFA",
     name: "Igname et Jus d'Œuf",
     desc: "Un plat réconfortant typique du terroir béninois, parfait pour bien démarrer la journée.",
   },
   {
-    image: Image3,
+    image: "/assets/5.png",
     rating: "⭐⭐⭐⭐⭐",
     price: "700 FCFA",
     name: "Couscous Garni",
@@ -42,9 +42,11 @@ const TopList = () => {
             key={index}
             className="bg-white/50 p-4 md:p-5 lg:p-6 rounded-3xl hover:scale-105 md:hover:scale-110 transition duration-300"
           >
-            <img
+            <Image
               src={item.image}
               alt={item.name}
+              width={240}
+              height={240}
               className="w-48 sm:w-40 md:w-52 lg:w-[240px] mx-auto object-cover rounded-full img-shadow"
             />
             <div className="space-y-2 mt-4">

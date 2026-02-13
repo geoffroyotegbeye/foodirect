@@ -1,5 +1,7 @@
+'use client'
+
 import React from "react";
-import BannerImg from "../../assets/2.png";
+import Image from "next/image";
 
 const Banner = () => {
   return (
@@ -8,9 +10,11 @@ const Banner = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* img section */}
           <div className="flex justify-center items-center order-2 md:order-1">
-            <img 
-              src={BannerImg} 
+            <Image 
+              src="/assets/2.png"
               alt="FOODIRECT Restaurant" 
+              width={500}
+              height={500}
               className="w-full max-w-[300px] md:max-w-full"
             />
           </div>

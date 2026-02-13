@@ -1,6 +1,6 @@
 import React from "react";
-import HeroImg from "../../assets/1.png";
 import { FaWhatsapp } from "react-icons/fa";
+import Image from "next/image";
 
 const Hero = () => {
   return (
@@ -34,9 +34,11 @@ const Hero = () => {
         </div>
         {/* image section */}
         <div className="flex flex-col justify-center items-center">
-          <img
-            src={HeroImg}
+          <Image
+            src="/assets/1.png"
             alt="Plat FOODIRECT"
+            width={400}
+            height={400}
             className="animate-spin-slow img-shadow w-[250px] md:w-[350px] lg:w-[400px] mx-auto"
           />
         </div>
