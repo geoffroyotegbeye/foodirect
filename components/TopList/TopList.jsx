@@ -15,7 +15,7 @@ const FoodData = [
     image: "/assets/4.png",
     rating: "⭐⭐⭐⭐⭐",
     price: "500 FCFA",
-    name: "Igname et Jus d'Œuf",
+    name: "Igname et Jus d&apos;Œuf",
     desc: "Un plat réconfortant typique du terroir béninois, parfait pour bien démarrer la journée.",
   },
   {

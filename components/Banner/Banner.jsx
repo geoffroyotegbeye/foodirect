@@ -25,7 +25,7 @@ const Banner = () => {
             </h1>
             <p className="text-sm md:text-base font-semibold leading-relaxed">
               Chez FOODIRECT, nous vous garantissons une cuisine béninoise traditionnelle 
-              préparée dans le respect des normes d'hygiène. Notre service de livraison 
+              préparée dans le respect des normes d&apos;hygiène. Notre service de livraison 
               est disponible pour vous apporter nos délicieux plats directement à votre bureau 
               ou à domicile dans la zone de Ganhi et ses environs.
             </p>

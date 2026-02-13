@@ -81,7 +81,7 @@ export default function Home() {
             },
             {
               "@type": "MenuItem",
-              "name": "Igname et Jus d'Œuf",
+              "name": "Igname et Jus d\u0027Œuf",
               "description": "Un plat réconfortant typique du terroir béninois",
               "offers": {
                 "@type": "Offer",
