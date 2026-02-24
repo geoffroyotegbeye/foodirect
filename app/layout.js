@@ -1,10 +1,18 @@
-import { Poppins } from 'next/font/google'
+import { Nunito, Dancing_Script } from 'next/font/google'
 import './globals.css'
 
-const poppins = Poppins({ 
-  weight: ['400', '600', '700'],
+const nunito = Nunito({ 
+  weight: ['400', '600', '700', '800'],
   subsets: ['latin'],
   display: 'swap',
+  variable: '--font-nunito',
+})
+
+const dancingScript = Dancing_Script({
+  weight: ['400', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-dancing',
 })
 
 export const metadata = {
@@ -69,7 +77,7 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={poppins.className}>{children}</body>
+      <body className={`${nunito.variable} ${dancingScript.variable} font-sans`}>{children}</body>
     </html>
   )
 }

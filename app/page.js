@@ -2,9 +2,12 @@
 
 import Navbar from "../components/Navbar/Navbar";
 import Hero from "../components/Hero/Hero";
+import MenuDuJour from "../components/MenuDuJour/MenuDuJour";
 import TopList from "../components/TopList/TopList";
 import Banner from "../components/Banner/Banner";
 import OurServices from "../components/OurServices/OurServices";
+import OrderForm from "../components/OrderForm/OrderForm";
+import Testimonials from "../components/Testimonials/Testimonials";
 import Footer from "../components/Footer/Footer";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
@@ -25,7 +28,7 @@ export default function Home() {
     "image": "https://foodirect.netlify.app/assets/1.png",
     "url": "https://foodirect.netlify.app",
     "telephone": "+2290191260434",
-    "priceRange": "500-800 FCFA",
+    "priceRange": "500-10000 FCFA",
     "servesCuisine": "Béninoise",
     "acceptsReservations": "True",
     "address": {
@@ -44,65 +47,12 @@ export default function Home() {
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "07:00",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+        "opens": "09:00",
         "closes": "20:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "08:00",
-        "closes": "21:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Sunday",
-        "opens": "08:00",
-        "closes": "18:00"
       }
     ],
     "menu": "https://foodirect.netlify.app/#menu",
-    "hasMenu": {
-      "@type": "Menu",
-      "hasMenuSection": [
-        {
-          "@type": "MenuSection",
-          "name": "Plats Principaux",
-          "hasMenuItem": [
-            {
-              "@type": "MenuItem",
-              "name": "Riz au Gras Créole",
-              "description": "Notre spécialité la plus appréciée, un riz savoureux avec un assaisonnement riche et authentique",
-              "offers": {
-                "@type": "Offer",
-                "price": "800",
-                "priceCurrency": "XOF"
-              }
-            },
-            {
-              "@type": "MenuItem",
-              "name": "Igname et Jus d\u0027Œuf",
-              "description": "Un plat réconfortant typique du terroir béninois",
-              "offers": {
-                "@type": "Offer",
-                "price": "500",
-                "priceCurrency": "XOF"
-              }
-            },
-            {
-              "@type": "MenuItem",
-              "name": "Couscous Garni",
-              "description": "Servi avec une sauce légumes ou tomate bien garnie",
-              "offers": {
-                "@type": "Offer",
-                "price": "700",
-                "priceCurrency": "XOF"
-              }
-            }
-          ]
-        }
-      ]
-    },
     "sameAs": [
       "https://wa.me/2290191260434"
     ]
@@ -121,9 +71,12 @@ export default function Home() {
         <div style={bgStyle} className="overflow-x-hidden">
           <div className="min-h-screen bg-white/50 backdrop-blur-3xl">
             <Hero />
+            <MenuDuJour />
             <TopList />
             <Banner />
             <OurServices />
+            <OrderForm />
+            <Testimonials />
           </div>
         </div>
         <Footer />

@@ -72,12 +72,10 @@ const Footer = () => {
           <div>
             <h4 className="text-xl font-semibold mb-4">Horaires d&apos;Ouverture</h4>
             <div className="space-y-2 text-sm md:text-base text-gray-300">
-              <p><span className="font-semibold">Lundi - Vendredi:</span> 7h - 20h</p>
-              <p><span className="font-semibold">Samedi:</span> 8h - 21h</p>
-              <p><span className="font-semibold">Dimanche:</span> 8h - 18h</p>
+              <p><span className="font-semibold">Tous les jours:</span> 9h - 20h</p>
               <div className="mt-4 p-3 bg-primary/10 rounded-lg border border-primary/30">
                 <p className="text-primary font-semibold">📍 Livraison disponible</p>
-                <p className="text-xs text-gray-300 mt-1">Dans la zone de Ganhi et environs</p>
+                <p className="text-xs text-gray-300 mt-1">Démarrage des livraisons à partir de 12h</p>
               </div>
             </div>
           </div>

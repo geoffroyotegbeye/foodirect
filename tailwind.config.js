@@ -10,7 +10,8 @@ module.exports = {
         primary: "#f97316",
       },
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
+        sans: ["var(--font-nunito)", "sans-serif"],
+        cursive: ["var(--font-dancing)", "cursive"],
       },
       container: {
         center: true,

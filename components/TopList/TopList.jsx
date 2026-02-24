@@ -1,59 +1,134 @@
 'use client'
 
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { menuCategories } from "../../data/menuData";
+import SectionTitle from "../SectionTitle/SectionTitle";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const FoodData = [
-  {
-    image: "/assets/3.png",
-    rating: "⭐⭐⭐⭐⭐",
-    price: "800 FCFA",
-    name: "Riz au Gras Créole",
-    desc: "Notre spécialité la plus appréciée, un riz savoureux avec un assaisonnement riche et authentique.",
-  },
-  {
-    image: "/assets/4.png",
-    rating: "⭐⭐⭐⭐⭐",
-    price: "500 FCFA",
-    name: "Igname et Jus d&apos;Œuf",
-    desc: "Un plat réconfortant typique du terroir béninois, parfait pour bien démarrer la journée.",
-  },
-  {
-    image: "/assets/5.png",
-    rating: "⭐⭐⭐⭐⭐",
-    price: "700 FCFA",
-    name: "Couscous Garni",
-    desc: "Servi avec une sauce légumes ou tomate bien garnie, préparé comme à la maison.",
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 const TopList = () => {
+  const [activeCategory, setActiveCategory] = useState('repas');
+  const rowsRef = useRef([]);
+
+  useEffect(() => {
+    // Animation GSAP pour les lignes - très douce
+    rowsRef.current.forEach((row, index) => {
+      if (row) {
+        gsap.fromTo(
+          row,
+          { 
+            opacity: 0, 
+            y: 20
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            delay: index * 0.08,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: row,
+              start: "top 90%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+      }
+    });
+  }, [activeCategory]);
+
+  const currentMenu = menuCategories[activeCategory] || [];
+
   return (
     <div id="menu" className="container py-10 md:py-14 px-4">
-      {/* header section */}
-      <div className="text-center mb-8 md:mb-12">
-        <h1 className="text-3xl md:text-4xl font-semibold">Nos Spécialités</h1>
-        <p className="text-sm md:text-base mt-2">Les plats les plus populaires du terroir béninois</p>
+      <SectionTitle 
+        title="Nos Spécialités" 
+        subtitle="Faites votre choix"
+      />
+
+      {/* Filtres de catégories */}
+      <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-8">
+        <button
+          onClick={() => setActiveCategory('repas')}
+          className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+            activeCategory === 'repas'
+              ? 'bg-primary text-white shadow-lg scale-105'
+              : 'bg-white/70 text-gray-700 hover:bg-white hover:shadow-md'
+          }`}
+        >
+          🍽️ Repas
+        </button>
+        <button
+          onClick={() => setActiveCategory('desserts')}
+          className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+            activeCategory === 'desserts'
+              ? 'bg-primary text-white shadow-lg scale-105'
+              : 'bg-white/70 text-gray-700 hover:bg-white hover:shadow-md'
+          }`}
+        >
+          🍰 Desserts
+        </button>
+        <button
+          onClick={() => setActiveCategory('extras')}
+          className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
+            activeCategory === 'extras'
+              ? 'bg-primary text-white shadow-lg scale-105'
+              : 'bg-white/70 text-gray-700 hover:bg-white hover:shadow-md'
+          }`}
+        >
+          🥤 Extras
+        </button>
       </div>
-      {/* card section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
-        {FoodData.map((item, index) => (
+
+      {/* Liste du menu en lignes */}
+      <div className="max-w-5xl mx-auto space-y-4">
+        {currentMenu.map((item, index) => (
           <div
-            key={index}
-            className="bg-white/50 p-4 md:p-5 lg:p-6 rounded-3xl hover:scale-105 md:hover:scale-110 transition duration-300"
+            key={item.id}
+            ref={(el) => (rowsRef.current[index] = el)}
+            className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-md hover:shadow-xl transition-all duration-500 overflow-hidden group"
           >
-            <Image
-              src={item.image}
-              alt={item.name}
-              width={240}
-              height={240}
-              className="w-48 sm:w-40 md:w-52 lg:w-[240px] mx-auto object-cover rounded-full img-shadow"
-            />
-            <div className="space-y-2 mt-4">
-              <p className="text-red-500 text-sm">{item.rating}</p>
-              <p className="text-base md:text-lg font-semibold">{item.name}</p>
-              <p className="text-xs md:text-sm text-gray-700">{item.desc}</p>
-              <p className="text-lg md:text-xl font-semibold text-primary">{item.price}</p>
+            <div className="flex flex-col md:flex-row items-center gap-4 p-4">
+              {/* Image */}
+              <div className="flex-shrink-0 relative">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  width={120}
+                  height={120}
+                  className="w-24 h-24 md:w-28 md:h-28 object-cover rounded-full img-shadow group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                {item.featured && (
+                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    ⭐
+                  </div>
+                )}
+              </div>
+
+              {/* Nom et composition */}
+              <div className="flex-grow text-center md:text-left">
+                <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-1">
+                  {item.name}
+                </h3>
+                <p className="text-sm text-gray-600 mb-1">
+                  {item.description}
+                </p>
+                {item.note && (
+                  <p className="text-xs text-blue-600 italic mt-1">
+                    ℹ️ {item.note}
+                  </p>
+                )}
+              </div>
+
+              {/* Prix */}
+              <div className="flex-shrink-0 text-center md:text-right">
+                <p className="text-xl md:text-2xl font-bold text-primary whitespace-nowrap">
+                  {item.price} FCFA
+                </p>
+              </div>
             </div>
           </div>
         ))}

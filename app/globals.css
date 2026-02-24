@@ -6,6 +6,7 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    scroll-padding-top: 100px;
   }
   
   body {
@@ -25,5 +26,12 @@
 @layer utilities {
   .img-shadow {
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.4));
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
